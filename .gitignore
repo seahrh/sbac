@@ -88,5 +88,6 @@ target/
 node_modules/
 src/main/webapp/scripts/
 src/main/webapp/styles/
+src/main/webapp/fonts/
 src/main/webapp/WEB-INF/views/
 src/main/webapp/WEB-INF/templates/

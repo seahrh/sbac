@@ -14,9 +14,34 @@
 			<div class="col-xs-12">
 				<h1>American Names 1890-2010</h1>
 				<form id="sbac-index__search">
-					<input id="sbac-index__search__input" name="query" type="text"
-						placeholder="Search" autocomplete="off">
+					<label for="sbac-index__search__input" class="sr-only">Search
+						American names</label>
+					<div class="input-group input-group-lg">
+						<input id="sbac-index__search__input" class="form-control"
+							name="query" type="text" placeholder="Search" autocomplete="off">
+						<span class="input-group-btn">
+							<button id="sbac-index__search__button" class="btn btn-default"
+								type="submit">
+								<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+							</button>
+						</span>
+					</div>
 				</form>
+				<div id="sbac-index__search-results">
+					<div id="sbac-index__search-results__summary"></div>
+					<table id="sbac-index__search-results__table" class="table table-condensed table-striped">
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Gender</th>
+								<th>Count</th>
+								<th>Year</th>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
 	</div>

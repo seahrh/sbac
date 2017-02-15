@@ -121,6 +121,11 @@ gulp.task('watch', function() {
 });
 // Reload webapp when watched files are changed
 gulp.task('reload', $.shell.task(['mvn war:war']));
+gulp.task('fonts', function() {
+    return gulp.src(['bootstrap/dist/fonts/*'], {
+        cwd : bases.pkgs
+    }).pipe(gulp.dest(bases.dist + 'fonts'));
+});
 gulp.task('update:jquery', function() {
     return gulp.src(['jquery.js'], {
         cwd : bases.pkgs + 'jquery/dist'
@@ -142,7 +147,7 @@ gulp.task('update:bootstrap-3-typeahead', function() {
     }).pipe(gulp.dest(bases.app + 'scripts/vendor'));
 });
 gulp.task('update', function(cb) {
-    runSequence(['clean:vendor'], ['update:jquery', 'update:bootstrap-js', 'update:bootstrap-css', 'update:bootstrap-3-typeahead'], cb);
+    runSequence(['clean:vendor', 'clean:fonts'], ['fonts', 'update:jquery', 'update:bootstrap-js', 'update:bootstrap-css', 'update:bootstrap-3-typeahead'], cb);
 });
 function error(err) {
     err.showStack = true;
