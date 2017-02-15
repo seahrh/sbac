@@ -40,7 +40,7 @@ public final class NamesSearchResource {
 				.build();
 		}
 		List<Name> names = NameStore.search(query);
-		log.debug("names [{}]", names);
+		log.info("names [{}]", names);
 		json = Name.toPublicJson(names);
 		return Response.status(200)
 			.entity(json)

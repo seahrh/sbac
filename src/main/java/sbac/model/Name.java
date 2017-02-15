@@ -1,7 +1,10 @@
 package sbac.model;
 
+import static sbac.util.JsonUtil.JSON;
 import static sbac.util.JsonUtil.exclude;
 import static sbac.util.StringUtil.trim;
+
+import java.util.List;
 
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Field;
@@ -11,6 +14,8 @@ import org.mongodb.morphia.annotations.Property;
 import org.mongodb.morphia.utils.IndexType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.google.gson.reflect.TypeToken;
 
 @Entity
 @Indexes(@Index(fields = { @Field(value = "name", type = IndexType.TEXT),
@@ -38,6 +43,10 @@ public final class Name extends ModelBase {
 	
 	public static String toPublicJson(Iterable<Name> entities) {
 		return exclude(FIELDS_EXCLUDED_IN_PUBLIC_FACING_JSON).toJson(entities);
+	}
+	
+	public static List<Name> fromJson(String json) {
+		return JSON.fromJson(json, new TypeToken<List<Name>>(){}.getType());
 	}
 
 	public String name() {
