@@ -29,7 +29,8 @@ public final class NameStore extends DatastoreBase {
 		}
 		log.info("query [{}]", query);
 		List<Name> ret = query().search(query)
-			.order("-count")
+			.order("$score:1")
+			.limit(10)
 			.asList();
 		return ret;
 	}
