@@ -5,7 +5,7 @@ import org.mongodb.morphia.Morphia;
 
 import com.mongodb.MongoClient;
 
-public final class MyDatastore {
+public class DatastoreBase {
 	private static final Morphia morphia = new Morphia();
 	private static Datastore ds;
 
@@ -16,6 +16,10 @@ public final class MyDatastore {
 		// create the Datastore connecting to the default port on the local host
 		ds = morphia.createDatastore(new MongoClient(), "sbac");
 		ds.ensureIndexes();
+	}
+	
+	protected DatastoreBase() {
+		// Not meant to be instantiated
 	}
 
 	public static Datastore get() {

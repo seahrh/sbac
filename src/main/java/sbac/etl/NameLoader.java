@@ -11,11 +11,11 @@ import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.common.io.Files;
-
-import sbac.datastore.MyDatastore;
+import sbac.datastore.DatastoreBase;
 import sbac.model.Name;
 import sbac.util.FileUtil;
+
+import com.google.common.io.Files;
 
 public final class NameLoader {
 	private static final Logger log = LoggerFactory.getLogger(NameLoader.class);
@@ -60,7 +60,7 @@ public final class NameLoader {
 			n = new Name(name, gender, count, year);
 			names.add(n);
 		}
-		MyDatastore.get()
+		DatastoreBase.get()
 			.save(names);
 		long elapsedTime = System.currentTimeMillis() - startTime;
 		log.info("load {}: completed ({}s)", year, elapsedTime / 1000);
