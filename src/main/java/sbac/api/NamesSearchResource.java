@@ -4,11 +4,14 @@ import static sbac.util.StringUtil.trim;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -30,7 +33,12 @@ public final class NamesSearchResource {
 	 */
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response get(@PathParam("query") String query) {
+	public Response get(@PathParam("query") String query, @Context HttpServletRequest request) {
+		HttpSession session= request.getSession();
+		// Monitor api usage by tracking session id
+		// Rate limit misbehaving users
+		// (Log already records api resource class and timestamp)
+		log.info("session id [{}]", session.getId());
 		query = trim(query);
 		String json = "";
 		if (query.isEmpty()) {
@@ -40,7 +48,7 @@ public final class NamesSearchResource {
 				.build();
 		}
 		List<Name> names = NameStore.search(query);
-		log.info("names [{}]", names);
+		log.debug("names [{}]", names);
 		json = Name.toPublicJson(names);
 		return Response.status(200)
 			.entity(json)
