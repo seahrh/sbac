@@ -29,16 +29,30 @@ public class NamesSearchResourceIT extends ApiTestBase {
 			.toString(), MediaType.APPLICATION_JSON);
 		final String json = rsp.readEntity(String.class);
 		List<Name> names = Name.fromJson(json);
-		String stem;
+		// Name should contain stemmed version of query string
+		final String stem = query.substring(0, query.length() - 1);
 		for (Name n : names) {
-			stem = query.substring(0, query.length() - 1);
-			assertEquals(n.name().contains(stem), true);
+			assertEquals(n.name()
+				.contains(stem), true);
 		}
 	}
 
 	@DataProvider
 	public Object[][] namesThatExistData() {
 		return new Object[][] { { "laura" }, { "mary" }, { "johnny" } };
+	}
+
+	@Test
+	public void emptyQueryString() {
+		// Query string is empty, so path is only the endpoint.
+		final Response rsp = API.path(ENDPOINT)
+			.request()
+			.get();
+		assertEquals(rsp.getStatus(), HttpServletResponse.SC_BAD_REQUEST);
+		assertEquals(rsp.getMediaType()
+			.toString(), MediaType.APPLICATION_JSON);
+		final String json = rsp.readEntity(String.class);
+		assertEquals(json, "");
 	}
 
 }

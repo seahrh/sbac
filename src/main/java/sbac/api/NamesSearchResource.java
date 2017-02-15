@@ -18,15 +18,15 @@ import org.slf4j.LoggerFactory;
 import sbac.datastore.NameStore;
 import sbac.model.Name;
 
-@Path("names/search/{query}")
+@Path("names/search/{query: .*}")
 public final class NamesSearchResource {
 	private static final Logger log = LoggerFactory.getLogger(NamesSearchResource.class);
 
 	/**
-	 * Method handling HTTP GET requests. The returned object will be sent to
-	 * the client as "text/plain" media type.
+	 * Handles the full text search of names. The returned object will be sent
+	 * to the client as "application/json" media type.
 	 * 
-	 * @return String that will be returned as a text/plain response.
+	 * @return String json representing the result set
 	 */
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
