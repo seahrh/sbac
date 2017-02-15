@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	<jsp-config>
+		<jsp-property-group>
+			<url-pattern>*.jsp</url-pattern>
+			<page-encoding>UTF-8</page-encoding>
+			<!-- Disable scriplets as a safeguard -->
+			<scripting-invalid>true</scripting-invalid>
+		</jsp-property-group>
+	</jsp-config>
+	<servlet>
+		<servlet-name>Jersey REST Service</servlet-name>
+		<servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+		<!-- Register resources in given package -->
+		<init-param>
+			<param-name>jersey.config.server.provider.packages</param-name>
+			<param-value>sbac.api</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Jersey REST Service</servlet-name>
+		<url-pattern>/api/*</url-pattern>
+	</servlet-mapping>
+	<welcome-file-list>
+		<welcome-file>WEB-INF/views/index.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>
