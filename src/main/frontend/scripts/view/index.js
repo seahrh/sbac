@@ -7,10 +7,12 @@
 
         function searchBox() {
             var $input = $("#sbac-index__search__input");
-            $input.typeahead({
-                source : ["already", "allision", "alkanasda"],
-                autoSelect : true
-            });
+            $.get('names.json', function(data) {
+                $input.typeahead({
+                    source : data,
+                    autoSelect : true
+                });
+            }, 'json');
             $input.change(function() {
                 var current = $input.typeahead("getActive");
                 console.log(current);
