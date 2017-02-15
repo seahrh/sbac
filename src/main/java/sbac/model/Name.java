@@ -1,12 +1,12 @@
 package sbac.model;
 
+import static sbac.util.JsonUtil.exclude;
 import static sbac.util.StringUtil.trim;
 
 import org.mongodb.morphia.annotations.Entity;
-import org.mongodb.morphia.annotations.Id;
-import org.mongodb.morphia.annotations.Indexes;
-import org.mongodb.morphia.annotations.Index;
 import org.mongodb.morphia.annotations.Field;
+import org.mongodb.morphia.annotations.Index;
+import org.mongodb.morphia.annotations.Indexes;
 import org.mongodb.morphia.annotations.Property;
 import org.mongodb.morphia.utils.IndexType;
 import org.slf4j.Logger;
@@ -15,26 +15,29 @@ import org.slf4j.LoggerFactory;
 @Entity
 @Indexes(@Index(fields = { @Field(value = "name", type = IndexType.TEXT),
 		@Field(value = "year", type = IndexType.TEXT) }))
-public final class Name {
+public final class Name extends ModelBase {
 	private static final Logger log = LoggerFactory.getLogger(Name.class);
 
-	@Id
-	private String _id = null;
 	@Property
 	private String name = null;
 	private char gender = 'u';
 	private int count = 0;
 	private String year = null;
 
+	private Name() {
+		// No-arg constructor required for json serialization/de-serialization.
+	}
+	
 	public Name(String name, char gender, int count, String year) {
+		this();
 		name(name);
 		gender(gender);
 		count(count);
 		year(year);
 	}
-
-	public String _id() {
-		return _id;
+	
+	public static String toPublicJson(Iterable<Name> entities) {
+		return exclude(FIELDS_EXCLUDED_IN_PUBLIC_FACING_JSON).toJson(entities);
 	}
 
 	public String name() {
