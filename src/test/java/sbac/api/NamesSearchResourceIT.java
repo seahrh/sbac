@@ -43,23 +43,6 @@ public class NamesSearchResourceIT extends ApiTestBase {
 	}
 
 	@Test
-	public void multipleTerms() {
-		// Query string contains multiple terms
-		// and there is at least 1 item in result set.
-		final String query = "linda 2003";
-		final String path = concat(ENDPOINT, query);
-		final Response rsp = API.path(path)
-			.request()
-			.get();
-		assertEquals(rsp.getStatus(), HttpServletResponse.SC_OK);
-		assertEquals(rsp.getMediaType()
-			.toString(), MediaType.APPLICATION_JSON);
-		final String json = rsp.readEntity(String.class);
-		List<Name> names = Name.fromJson(json);
-		assertEquals(names.isEmpty(), false);
-	}
-	
-	@Test
 	public void emptyQueryString() {
 		// Query string is empty, so path is only the endpoint.
 		final Response rsp = API.path(ENDPOINT)
