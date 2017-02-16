@@ -96,6 +96,8 @@ App configuration (e.g. database credentials) is stored in a configuration file 
 
 ## System Design & Time Spent
 
+There are actually two tasks. First, autocomplete the search query. Second, given a search query, use mongodb to perform the full text search.
+
 1. Use MongoDB as the main database (4 hours)
 
     1. database=`sbac`
