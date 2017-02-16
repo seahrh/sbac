@@ -28,7 +28,7 @@ Install mongodb
 
 Import the data dump (assuming data is stored at default path /data/db):
 
-> 
+> mongoimport --db sbac --collection Name Name.json --jsonArray
 
 Start the mongo daemon
 
