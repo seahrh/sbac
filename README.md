@@ -38,11 +38,19 @@ Start the mongo daemon
 
 > mongod --auth
 
-Access is password protected.
+Access is password protected. Create the following users in mongo shell:
 
 user: dba, password: dba (all privileges)
 
+> use admin
+
+> db.createUser({user: "dba",pwd: "dba",roles: [ { role: "userAdminAnyDatabase", db: "admin" } ]  })
+
 user: sbacu, password: sbacu (read/write privilege on sbac database)
+
+> use sbac
+
+> db.createUser({user: "sbacu",pwd: "sbacu",roles: [ { role: "readWrite", db: "sbac" } ]  })
 
 Login as sbacu:
 
