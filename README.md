@@ -22,7 +22,11 @@ Install Java dependencies
 
 ## Database
 
-Install mongodb and import the data dump (assuming data is stored at default path /data/db):
+Install mongodb 
+
+[Download the data dump](https://drive.google.com/open?id=0B7gBv2Jut0VxT29uQ0RLb2duNkU)
+
+Import the data dump (assuming data is stored at default path /data/db):
 
 > 
 
