@@ -1,8 +1,8 @@
 # Autocomplete & Search
 
-![Autocomplete suggestions](https://drive.google.com/open?id=0B7gBv2Jut0VxdGg3U0ZGcTZTQXc??raw=true)
+![Autocomplete suggestions](https://drive.google.com/uc?id=0B7gBv2Jut0VxdGg3U0ZGcTZTQXc)
 
-![Search results](https://drive.google.com/open?id=0B7gBv2Jut0VxVElINFNnU29FZms??raw=true)
+![Search results](https://drive.google.com/uc?id=0B7gBv2Jut0VxVElINFNnU29FZms)
 
 ## Data
 
