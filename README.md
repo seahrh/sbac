@@ -60,7 +60,7 @@ Backend java is built with maven.
 
 ## Tests
 
-Tests are run with maven. Unit tests are run in test phase and integration tests are run in verify phase of the Maven build lifecycle. Tests are contained in src/test/java package; *Test.java are unit tests and *IT.java are integration tests. 
+Tests are run with maven. Unit tests are run in `test` phase and integration tests are run in `verify` phase of the Maven build lifecycle. Tests are contained in [`src/test/java` package](src/test/java/sbac); `*Test.java` are unit tests and `*IT.java` are integration tests. 
 
 The REST API is tested as an integration test because it requires a live mongodb connection and the API must be deployed on a server.
 
@@ -74,7 +74,7 @@ To run the tests,
 
 ## One-Step Deploy
 
-To do the localhost in one step, run the following batch script (Windows): `dev.bat`
+To do the localhost in one step, run the following batch script (Windows): [`dev.bat`](dev.bat)
 
 > dev
 
@@ -88,19 +88,19 @@ http://localhost:8080/
 
 App configuration (e.g. database credentials) is stored in a configuration file separate from source code. So that if we need to change configuration, we don’t need to recompile.
 
-`src/main/resources/config/config.properties`
+[`src/main/resources/config/config.properties`](src/main/resources/config/config.properties)
 
 ## System Design & Time Spent
 
 1. Use MongoDB as the main database (4 hours)
 
-    1. database=sbac
+    1. database=`sbac`
 
-    2. collection=Name (same as model class name `src/main/java/sbac/model/Name.java`, following DRY principle)
+    2. collection=`Name` (same as model classname [`Name.java`](src/main/java/sbac/model/Name.java), following DRY principle)
 
-    3. Name schema: {name, gender, count, year}
+    3. Schema: {name, gender, count, year}
 
-    4. example query: db.Name.find()
+    4. example query: `db.Name.find()`
 
     5. Used Morphia as ORM and mongodb Java driver
 
@@ -108,13 +108,13 @@ App configuration (e.g. database credentials) is stored in a configuration file 
 
 2. Use MongoDB textsearch for autocomplete feature (1 hour)
 
-    7. Built a full text search index on two fields {name, year} as these are the likely fields to search
+    7. Built a full text search index on two fields {`name`, `year`} as these are the likely fields to search
 
 3. Have a simple AutoComplete Search Bar (3 hours) 
 
     8. Handle the autocomplete on the client side to make the user experience responsive in real time
 
-    9. Used a 3rd party JavaScript widget: bootstrap-3-typeahead. Fetches a json file `src/main/webapp/names.json` from the server to populate the widget.
+    9. Used a 3rd party JavaScript widget: bootstrap-3-typeahead. Fetches a json file [`src/main/webapp/names.json`](src/main/webapp/names.json) from the server to populate the widget.
 
     10. Autocomplete suggestions are limited to names that have at least count=10. This reduces the size of the json file, so that the autocomplete/network latency is more performant.
 
@@ -134,7 +134,7 @@ App configuration (e.g. database credentials) is stored in a configuration file 
 
 5. REST API done with Jersey (8 hours)
 
-    15. see `src/main/java/api` package
+    15. see [`sbac.api`](src/main/java/sbac/api) package
 
     16. No api key as the api is public. Instead log session id. If user misbehaves, rate limit by session id (or ip address).
 
