@@ -2,7 +2,7 @@
 
 ## Data
 
-Dataset contains 1.7 million name records in the form {`name`, `gender`, `count`, `year`}. See how names change in popularity from 1890 to 2010. Source: [US Social Security Administration](https://www.data.gov/)) 
+Dataset contains 1.7 million name records in the tuple {`name`, `gender`, `count`, `year`}. See how names change in popularity from 1890 to 2010. Source: [US Social Security Administration](https://www.data.gov/) 
 
 ## Setup
 
