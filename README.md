@@ -2,7 +2,7 @@
 
 ## Data
 
-Dataset contains 1.7 million name records in the form {name, gender, count, year}. See how names change in popularity from 1890 to 2010. Source: US Social Security Administration ([https://www.data.gov/](https://www.data.gov/)) 
+Dataset contains 1.7 million name records in the form {`name`, `gender`, `count`, `year`}. See how names change in popularity from 1890 to 2010. Source: [US Social Security Administration](https://www.data.gov/)) 
 
 ## Setup
 
@@ -24,7 +24,7 @@ Install Java dependencies
 
 Install mongodb 
 
-[Download the data dump](https://drive.google.com/open?id=0B7gBv2Jut0VxT29uQ0RLb2duNkU)
+[Download the data dump (206MB)](https://drive.google.com/open?id=0B7gBv2Jut0VxT29uQ0RLb2duNkU)
 
 Import the data dump (assuming data is stored at default path /data/db):
 
@@ -48,13 +48,13 @@ Login as sbacu:
 
 Frontend is built with gulp e.g. concatenate and minify js, css.
 
-Build file: `gulpfile.js`
+[`gulpfile.js`](gulpfile.js)
 
 > gulp 
 
 Backend java is built with maven.
 
-pom.xml: `pom.xml`
+[`pom.xml`](pom.xml)
 
 > mvn clean package
 
